@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                echo 'Hello sếp Nam đẹp trai'
+                echo 'Hello sếp Nam đẹp traithông minh học giỏi'
             }
         }
     }
