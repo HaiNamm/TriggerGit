@@ -6,6 +6,11 @@ pipeline {
                 echo 'Hello sếp Nam đẹp traithông minh học giỏi'
             }
         }
+        stage('Verify Docker Installation') {
+            steps {
+                sh 'docker --version'
+            }
+        }
         stage('Build stage') {
             steps {
                 withDockerRegistry(credentialsId: 'docker-hub', url:'https://index.docker.io/v1/') {
