@@ -8,9 +8,9 @@ pipeline {
         }
         stage('Build stage') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t hhainam/namnodejs:v2 .'
-                    sh 'docker push hhainam/namnodejs:v2'
+                withDockerRegistry(credentialsId: 'docker-hub', url:'https://index.docker.io/v1/') {
+                    sh label: "",script: 'docker build -t hhainam/nodejs-test:v2 .'
+                    sh label: "",script: 'docker push hhainam/nodejs-test:v2'
                 }
             }
         }
