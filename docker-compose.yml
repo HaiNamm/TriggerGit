@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+  drupal:
+    build: 
+      context: .
+      dockerfile: drupal.Dockerfile
+    image: nginxproxy:custom-drupal    
+    volumes:
+      - drupal_modules:/var/www/html/modules
+      - drupal_profiles:/var/www/html/profiles
+      - drupal_themes:/var/www/html/themes
+      - drupal_sites:/var/www/html/sites
+    ports:
+      - '80:80'
+    networks: 
+      - net
+
+  postgres:
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=postgres 
+      - POSTGRES_EXTENSIONS=pg_trgm 
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    networks: 
+      - net
+
+volumes:
+  drupal_modules:
+  drupal_profiles:
+  drupal_themes:
+  drupal_sites:
+  db_data:
+
+networks:
+  net:
