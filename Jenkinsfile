@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/HaiNamm/TriggerGit.git'
+                echo 'Hello world'
             }
         }
     }
