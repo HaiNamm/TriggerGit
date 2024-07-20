@@ -8,8 +8,8 @@ pipeline {
         stage('Test') {
            agent {
                 docker {
-                image 'python:3.8-slim-buster'
-                args '-u 0:0 -v /tmp:/root/.cache'
+                    image 'python:3.8-slim-buster'
+                    args '-u 0:0 -v /tmp:/root/.cache'
                 }
             }
             steps {
@@ -28,7 +28,7 @@ pipeline {
                 sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
                 sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
                 sh "docker image ls | grep ${DOCKER_IMAGE}"
-                withCredentials(credentialsId: 'docker-hub1', url:'https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: 'docker-hub1', url:'https://index.docker.io/v1/') {
                     sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
                 }
                 
