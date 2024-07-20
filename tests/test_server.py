@@ -8,7 +8,7 @@ def client():
         yield client
 
 def test_dummy():
-    assert 2 * 3 == 9
+    assert 2 * 3 == 6
     assert 2 + 3 == 5
     assert 2 * 2 == 4
     assert 2 - 2 == 0
