@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone stage') {
             steps {
-                echo 'Hello sếp Nam đẹp trai thông minh học giỏi ballbalblabl'
+                echo 'Hello sếp Nam đẹp trai thông minh học giỏi ballbalblablasdaDAd'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh "pip install poetry"
                 sh "poetry install"
-                // sh "poetry run pytest"
+                sh "poetry run pytest"
             }
         
         }
