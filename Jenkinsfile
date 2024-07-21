@@ -49,6 +49,14 @@ pipeline {
                 sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
             }
         }
+
+        stage("Deploy") {
+            steps {
+                withCredentials([sshKey(credentialsId: 'docker-hub1', sshKeyVariable: 'SSH_KEY')]) {
+                    sh  "ssh -i $SSH_KEY jenkins@172.23.233.156 './deploy.sh'"
+                }
+            }    
+        }
     }
     
     post {
