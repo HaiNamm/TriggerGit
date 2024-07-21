@@ -4,12 +4,6 @@ pipeline {
         DOCKER_IMAGE = "hhainam/namnodejs"
     }
     stages {
-        stage('Clone stage') {
-            steps {
-                echo 'Hello sếp Nam đẹp trai thông minh học giỏi dadasdasdassdadads'
-            }
-        }
-
         stage("Test") {
             agent {
                 docker {
@@ -50,13 +44,13 @@ pipeline {
             }
         }
 
-        stage("Deploy") {
-            steps {
-                withCredentials([sshKey(credentialsId: 'docker-hub1', sshKeyVariable: 'SSH_KEY')]) {
-                    sh  "ssh -i $SSH_KEY jenkins@172.23.233.156 './deploy.sh'"
-                }
-            }    
-        }
+        // stage("Deploy") {
+        //     steps {
+        //         withCredentials([sshKey(credentialsId: 'docker-hub1', sshKeyVariable: 'SSH_KEY')]) {
+        //             sh  "ssh -i $SSH_KEY jenkins@172.23.233.156 './deploy.sh'"
+        //         }
+        //     }    
+        // }
     }
     
     post {
